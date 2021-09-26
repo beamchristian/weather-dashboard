@@ -10,12 +10,46 @@ body {
 
 header {
     background-image: linear-gradient(to left, #050A30, #7272FF);
-    padding: .5rem .5rem;
+    padding: 1% 2%;
     color: whitesmoke;
     text-align: center;
+    text-shadow: 2px 2px black;
+    margin-bottom: 2%;
 }
 
 header h1 {
     font-weight: 900;
     font-size: 2rem;
+}
+
+.search {
+    border-bottom: 2px solid black;
+    font-weight: bold;
+}
+
+.search h2 {
+    font-weight: bold;
+}
+
+.form-input {
+    width: 100%;
+    padding: 3%;
+}
+
+ .btn {
+  font-size: 1.3rem;
+  text-decoration:none;
+  padding: 6px 5px;
+  width: 100%;
+  display: block;
+  margin: 15px 0px 15px 0px;
+  color: whitesmoke;
+  border: none;
+  outline: none;
+  background: #9F9FFF;
+}
+
+.btn:hover {
+  color: whitesmoke;
+  background: #7272FF;
 }

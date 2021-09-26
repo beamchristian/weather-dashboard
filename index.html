@@ -4,15 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Weather Dashboard</title>
 </head>
 <body>
+   
+    
+<div class="container-fluid">
     <header>
         <h1>Weather Dashboard</h1>
     </header>
-    <div class="container">
-    </div>
+    <div class="row">
+        <!-- Search and Search History -->
+    <div class="col-sm-2">
+        <div class="search">
+        <h2>Search for a City: </h2>
+        <input name="city" id="city" type="text" autofocus="true" class="form-input" />
+            <button type="submit" class="btn">Search</button>
+        </div>
+        </div>
+        <!-- City Conditions -->
+        <div class="col-sm-4">
+            <h2>City Conditions </h2>
+        </div>
+        <div class="w-100"></div>
+        <div class="col-sm-2">
+            <div id="search-hist" class="search-history">
+                Search History Here
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <h2>5-Day Forecast:</h2>
+        </div>
+        </div>
+
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
