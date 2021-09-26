@@ -9,7 +9,7 @@ body {
 }
 
 header {
-    background-image: linear-gradient(to left, #050A30, #7272FF);
+    background-image: linear-gradient(to left, #071330, #738FA7);
     padding: 1% 2%;
     color: whitesmoke;
     text-align: center;
@@ -46,10 +46,14 @@ header h1 {
   color: whitesmoke;
   border: none;
   outline: none;
-  background: #9F9FFF;
+  background: #C3CEDA;
 }
 
 .btn:hover {
   color: whitesmoke;
-  background: #7272FF;
+  background: #0C4160;
+}
+
+.card {
+    background: #738FA7;
 }
