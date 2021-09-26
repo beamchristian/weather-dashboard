@@ -46,7 +46,7 @@ header h1 {
   color: whitesmoke;
   border: none;
   outline: none;
-  background: #C3CEDA;
+  background: #071330;
 }
 
 .btn:hover {
@@ -54,6 +54,6 @@ header h1 {
   background: #0C4160;
 }
 
-.card {
+.card-style {
     background: #738FA7;
 }
