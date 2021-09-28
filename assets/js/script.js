@@ -3,8 +3,9 @@
 const userSearchEl = document.querySelector('#search-form');
 const cityInputEl = document.querySelector('#city-input');
 const cityContainerEl = document.querySelector('#city-container');
-const cityTitleEl = document.querySelector('#selected-city-title');
-const citySearchTerm = document.querySelector('#city-search-term');
+const cityTitleEl = document.querySelector('#city-search-title');
+const cityTemp = document.querySelector('#city-search-temp');
+const cityWind = document.querySelector('#city-search-wind');
 
 const getUserForcast = function (city) {
   // format the OpenWeather One Call API
@@ -44,9 +45,13 @@ const formSubmitHandler = function (event) {
   }
 };
 
-const displayWeatherInfo = function (cityInput, searchTerm) {
-  // clear old content
-  cityContainerEl.textContent = '';
+const displayWeatherInfo = function (data) {
+  let nameValue = data['name'];
+  let descValue = data['weather'][0]['icon'];
+  let tempValue = data['main']['temp'];
+
+  cityTitleEl.innerHTML = nameValue + descValue;
+  cityTemp.innerHTML = tempValue;
 };
 
 // const searchSubmitHandler = function (event) {};
