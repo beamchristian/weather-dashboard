@@ -9,23 +9,46 @@ const citySearchTerm = document.querySelector('#city-search-term');
 const getUserForcast = function (city) {
   // format the OpenWeather One Call API
   const apiUrl =
-    'https://api.openweathermap.org/data/2.5/weather?q= + city + &appid=01cec3e443f278224b33dd45c5cbe37c';
+    'https://api.openweathermap.org/data/2.5/weather?q=' +
+    cityInputEl.value +
+    '&appid=01cec3e443f278224b33dd45c5cbe37c';
 
   // make a request to the url
-  fetch(apiUrl).then(function (response) {
-    // request was succesful
-    if (response.ok) {
-      response.json().then(function (data) {
-        console.log(data, city);
-      });
-    }
-  });
+  fetch(apiUrl)
+    .then(function (response) {
+      // request was succesful
+      if (response.ok) {
+        response.json().then(function (data) {
+          console.log(data);
+          displayWeatherInfo(data, city);
+        });
+      } else {
+        alert('City Not Found');
+      }
+    })
+    .catch(function (error) {
+      alert('Unable to connect to Api');
+    });
 };
 
-const displayWeather = function()
+const formSubmitHandler = function (event) {
+  event.preventDefault();
+  // get value from input element
+  const cityInput = cityInputEl.value.trim();
+
+  if (cityInput) {
+    getUserForcast(cityInput);
+    cityInputEl.value = '';
+  } else {
+    alert('Please enter a city name or zip code.');
+  }
+};
+
+const displayWeatherInfo = function (cityInput, searchTerm) {
+  // clear old content
+  cityContainerEl.textContent = '';
+};
 
 // const searchSubmitHandler = function (event) {};
 
-// userSearchEl.addEventListener('submit', searchSubmitHandler);
-
-getUserForcast();
+userSearchEl.addEventListener('submit', formSubmitHandler);
