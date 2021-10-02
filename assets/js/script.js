@@ -12,6 +12,7 @@ const getUserForcast = function (city) {
   const apiUrl =
     'https://api.openweathermap.org/data/2.5/weather?q=' +
     cityInputEl.value +
+    '&units=imperial' +
     '&appid=01cec3e443f278224b33dd45c5cbe37c';
 
   // make a request to the url
@@ -45,13 +46,18 @@ const formSubmitHandler = function (event) {
   }
 };
 
+const displayIcon = function (src) {
+  let img = document.createElement('img');
+  img.src = src;
+};
+
 const displayWeatherInfo = function (data) {
-  let nameValue = data['name'];
-  let descValue = data['weather'][0]['icon'];
+  let nameValue = data.name;
+  let weatherIcon = data.weather[0].icon;
   let tempValue = data['main']['temp'];
 
-  cityTitleEl.innerHTML = nameValue + descValue;
-  cityTemp.innerHTML = tempValue;
+  cityTitleEl.innerHTML = nameValue;
+  cityTemp.innerHTML = tempValue + '°F';
 };
 
 // const searchSubmitHandler = function (event) {};
