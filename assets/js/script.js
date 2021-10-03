@@ -106,7 +106,6 @@ const displayWeatherInfo = function (data) {
   cityTemp.innerHTML = `${tempValue}°F`;
   cityWind.innerHTML = `${windValue} MPH`;
   cityHumidity.innerHTML = `${humidityValue} %`;
-  // Display 5 day forcast
 };
 
 userSearchEl.addEventListener('submit', formSubmitHandler);
