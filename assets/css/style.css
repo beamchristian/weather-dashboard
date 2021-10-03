@@ -57,3 +57,23 @@ header h1 {
 .card-style {
   background: #738fa7;
 }
+
+.low {
+  background-color: green;
+  padding: 5px 10px;
+}
+
+.medium {
+  background-color: yellow;
+  padding: 5px 10px;
+}
+
+.high {
+  background-color: red;
+  padding: 5px 10px;
+}
+
+.very-high {
+  background-color: purple;
+  padding: 5px 10px;
+}
