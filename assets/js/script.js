@@ -7,8 +7,8 @@ const cityTitleEl = document.querySelector('#city-search-title');
 const cityTemp = document.querySelector('#city-search-temp');
 const cityWind = document.querySelector('#city-search-wind');
 const cityHumidity = document.querySelector('#city-search-humidity');
-const cityUvi = document.querySelector('#city-search-uvi');
 const uviText = document.querySelector('#uvi-text');
+const weatherIcon = document.querySelector('.weatherIcon');
 
 // current date variables
 let today = new Date();
@@ -16,12 +16,6 @@ let month = today.getMonth() + 1;
 let year = today.getFullYear();
 let date = today.getDate();
 let currentDate = `(${month}/${date}/${year})`;
-
-// display icon function
-const displayIcon = function (src) {
-  let img = document.createElement('img');
-  img.src = src;
-};
 
 const formSubmitHandler = function (event) {
   event.preventDefault();
@@ -41,6 +35,7 @@ const getUserForcast = function (city) {
   const weatherApiUrl =
     'https://api.openweathermap.org/data/2.5/weather?q=' +
     cityInputEl.value +
+    '&exclude=current,minutely,hourly,alerts' +
     '&units=imperial' +
     '&appid=01cec3e443f278224b33dd45c5cbe37c';
 
@@ -67,6 +62,7 @@ const getUserForcast = function (city) {
     .then(data => displayOnecall(data));
 };
 
+// function to remove classes currently on uviValue
 const removeCurrentUviClass = function () {
   uviText.classList.remove('low');
   uviText.classList.remove('medium');
@@ -97,15 +93,20 @@ const displayOnecall = function (data) {
 };
 
 const displayWeatherInfo = function (data) {
+  // current weather variables
   let nameValue = data.name;
   let tempValue = data.main.temp;
   let windValue = data.wind.speed;
   let humidityValue = data.main.humidity;
-
+  let iconValue = data.weather[0].icon;
+  weatherIcon.src =
+    'https://openweathermap.org/img/wn/' + iconValue + '@2x.png';
+  // Display current weather variables in html
   cityTitleEl.innerHTML = `${nameValue} ${currentDate}`;
-  cityTemp.innerHTML = `Temp: ${tempValue}°F`;
-  cityWind.innerHTML = `Wind: ${windValue} MPH`;
-  cityHumidity.innerHTML = `Humidity: ${humidityValue} %`;
+  cityTemp.innerHTML = `${tempValue}°F`;
+  cityWind.innerHTML = `${windValue} MPH`;
+  cityHumidity.innerHTML = `${humidityValue} %`;
+  // Display 5 day forcast
 };
 
 userSearchEl.addEventListener('submit', formSubmitHandler);
