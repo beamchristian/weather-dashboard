@@ -39,6 +39,8 @@ Displayed for each day.
 
 ## Screenshots
 
+![EC8DD583-E402-4E63-96E2-AF668BD52290](https://user-images.githubusercontent.com/88356270/135787998-c53223bb-2199-403d-9ab3-ed67e2f1993f.gif)
+
 ## Links
 
 - [Repo](https://github.com/beamchristian/weather-dashboard 'weather-dashboard repo')
