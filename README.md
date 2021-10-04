@@ -8,11 +8,34 @@
 
 **<u>Search</u>** -
 
+- Form Element
+- Input for city input
+- Button submit
+
 **<u>Weather Conditions</u>** -
 
-**<u>Search History</u>**
+A card with the current Weather conditions:
+
+- icon
+- Temp
+- Wind
+- Humidity
+- UV Index
+  (UV Index's Background color changes according to the severity of the UV Index)
 
 **<u>5-Day Forecast</u>**
+
+5 card's with the future weather conditions:
+
+- date
+- icon
+- Temp
+- Wind
+- Humidity
+
+Displayed for each day.
+
+**<u>Search History</u>**
 
 ## Screenshots
 
