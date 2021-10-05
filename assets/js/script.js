@@ -1,7 +1,8 @@
 'use strict';
 // select all elements used for search
 const userSearchEl = document.querySelector('#search-form');
-const cityInputEl = document.querySelector('#city-input');
+const searchhist = document.querySelector('#search-hist');
+let cityInputEl = document.querySelector('#city-input');
 const cityContainerEl = document.querySelector('#city-container');
 const cityTitleEl = document.querySelector('#city-search-title');
 const cityTemp = document.querySelector('#city-search-temp');
@@ -10,6 +11,9 @@ const cityHumidity = document.querySelector('#city-search-humidity');
 const uviText = document.querySelector('#uvi-text');
 const weatherIcon = document.querySelector('.weatherIcon');
 
+// Empty Array for storing Search History
+let citySearch = [];
+
 // current date variables
 let today = new Date();
 let month = today.getMonth() + 1;
@@ -17,10 +21,44 @@ let year = today.getFullYear();
 let date = today.getDate();
 let currentDate = `(${month}/${date}/${year})`;
 
+const loadPastSearches = function () {
+  let retrieveSearches = localStorage.getItem('searches');
+  let citySearch2 = JSON.parse(retrieveSearches);
+  if (citySearch2) {
+    citySearch = citySearch2;
+  } else {
+    citySearch = [];
+  }
+  console.log(citySearch2);
+  createButton();
+  // create div to display past searches
+};
+
+const createButton = function (btn) {
+  for (let i = 0; i < citySearch.length; i++) {
+    let btn = document.createElement('button');
+    btn.type = 'button';
+    btn.classList.add('btn');
+    btn.setAttribute('id', 'btn2');
+    btn.innerText = citySearch[i];
+    searchhist.appendChild(btn);
+  }
+};
+
+const buttonSubmitHandler = function (event) {
+  event.preventDefault();
+
+  if (cityInput2) {
+    console.log(cityInput2);
+    getUserForcast(cityInput2);
+  }
+};
 const formSubmitHandler = function (event) {
   event.preventDefault();
   // get value from input element
-  const cityInput = cityInputEl.value.trim();
+  let cityInput = cityInputEl.value.trim();
+  citySearch.push(cityInput);
+  localStorage.setItem('searches', JSON.stringify(citySearch));
 
   if (cityInput) {
     getUserForcast(cityInput);
@@ -43,7 +81,6 @@ const getUserForcast = function () {
   fetch(weatherApiUrl)
     .then(response => response.json())
     .then(data => {
-      console.log(data);
       displayWeatherInfo(data);
       const latCoord = data.coord.lat;
       const lonCoord = data.coord.lon;
@@ -79,7 +116,6 @@ const getFutureForcast = function () {
 };
 
 const displayFutureForcast = function (data) {
-  console.log(data);
   // variables for the first card
   let futureDate1 = data.list[3].dt_txt.substring(0, 11);
   let futureIcon1 = data.list[3].weather[0].icon;
@@ -178,7 +214,6 @@ const removeCurrentUviClass = function () {
 };
 
 const displayOneCall = function (data) {
-  console.log(data);
   const displayUvi = function () {
     let uviValue = data.current.uvi;
     if (uviValue < 2) {
@@ -214,5 +249,7 @@ const displayWeatherInfo = function (data) {
   cityWind.innerHTML = `${windValue} MPH`;
   cityHumidity.innerHTML = `${humidityValue} %`;
 };
+// load any search data
+loadPastSearches();
 
 userSearchEl.addEventListener('submit', formSubmitHandler);
