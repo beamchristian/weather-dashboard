@@ -30,31 +30,23 @@ const loadPastSearches = function () {
     citySearch = [];
   }
   console.log(citySearch2);
-  createButton();
   // create div to display past searches
 };
 
-const createButton = function (btn) {
-  for (let i = 0; i < citySearch.length; i++) {
-    let btn = document.createElement('button');
-    btn.type = 'button';
-    btn.classList.add('btn');
-    btn.setAttribute('id', 'btn2');
-    btn.innerText = citySearch[i];
-    searchhist.appendChild(btn);
-  }
+const createButton = function () {
+  let btn = document.createElement('button');
+  btn.type = 'button';
+  btn.classList.add('btn');
+  btn.setAttribute('savedButton', cityInputEl.value);
+  btn.addEventListener('click', function () {
+    formSubmitHandler();
+  });
+  searchhist.appendChild(btn);
 };
 
-const buttonSubmitHandler = function (event) {
-  event.preventDefault();
-
-  if (cityInput2) {
-    console.log(cityInput2);
-    getUserForcast(cityInput2);
-  }
-};
 const formSubmitHandler = function (event) {
   event.preventDefault();
+  createButton();
   // get value from input element
   let cityInput = cityInputEl.value.trim();
   citySearch.push(cityInput);
@@ -235,6 +227,8 @@ const displayOneCall = function (data) {
 };
 
 const displayWeatherInfo = function (data) {
+  document.getElementById('current--col').classList.remove('hidden');
+  document.getElementById('future--col').classList.remove('hidden');
   // current weather variables
   let nameValue = data.name;
   let tempValue = data.main.temp;

@@ -26,10 +26,10 @@
         </form>
         </div>
         <!-- City Conditions -->
-        <div class="col-sm-9">
+        <div id="current--col" class="col-sm-9 hidden">
             <div class="card h-100 border-dark">
                 <div id="city-container" class="card-body">
-                   <p><h2 id="city-search-title">Selected City</h2><img src="" class="weatherIcon"/></p>  
+                   <p><h2 id="city-search-title"></h2><img src="" class="weatherIcon"/></p>  
                     <p>Temp: <span id="city-search-temp"></span></p>
                     <p>Wind: <span id="city-search-wind"></span></p>
                     <p>Humidity: <span id="city-search-humidity"></span></p>
@@ -40,10 +40,10 @@
         <div class="w-100"></div>
         <div class="col-sm-3">
             <div id="search-hist" class="search-history">
-                Search History Here
+                
             </div>
         </div>
-        <div class="col-sm-9 mt-2">
+        <div id="future--col" class="col-sm-9 mt-2 hidden">
             <h2 class="font-weight-bold">5-Day Forecast:</h2>
             <div class="card-group">
             <div class="card card-style m-2">
